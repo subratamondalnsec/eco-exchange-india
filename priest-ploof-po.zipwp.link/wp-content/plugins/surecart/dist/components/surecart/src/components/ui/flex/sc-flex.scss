@@ -1,0 +1,56 @@
+:host {
+  display: block;
+  --spacing: var(--sc-spacing-small);
+}
+
+.flex {
+  display: flex;
+  gap: var(--sc-flex-column-gap, var(--spacing) );
+  justify-content: var(--sc-flex-space-between, space-between );
+}
+
+$justify: flex-start, flex-end, center, space-between, space-around, space-evenly;
+@each $value in $justify {
+  .justify-#{$value} {
+    justify-content: $value;
+  }
+}
+
+$wrap: wrap, no-wrap;
+@each $value in $wrap {
+  .wrap-#{$value} {
+    flex-wrap: $value;
+  }
+}
+
+$align: flex-start, flex-end, center, baseline, stretch;
+@each $value in $align {
+  .align-#{$value} {
+    align-items: $value;
+  }
+}
+
+$direction: row, row-reverse, column, column-reverse;
+@each $value in $direction {
+  .direction-#{$value} {
+    flex-direction: $value;
+  }
+}
+
+@media (max-width: 480px) {
+  .stack-mobile {
+    flex-direction: column;
+  }
+}
+
+@media (max-width: 768px) {
+  .stack-tablet {
+    flex-direction: column;
+  }
+}
+
+@media (max-width: 1180px) {
+  .stack-desktop {
+    flex-direction: column;
+  }
+}
